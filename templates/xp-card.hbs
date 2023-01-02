@@ -1,0 +1,32 @@
+<div class="dnd5e chat-card xp-card">
+    <div class="xp-card__header">
+        <i class="trophy fas fa-trophy fa-3x">
+            <i class="splotch splotch1 fas fa-splotch"></i>
+            <i class="splotch splotch2 fas fa-splotch"></i>
+            <i class="splotch splotch3 fas fa-splotch"></i>
+            <i class="splotch splotch4 fas fa-splotch"></i>
+        </i>
+        <div class="xp-card__awarded">{{localize "xp-tally.you-have-been-awarded" xp=xpShare}}</div>
+        <div class="xp-card__xp-amount">{{localize "xp-tally.xp-amount" xp=xpShare}}</div>
+    </div>
+
+    {{#if doCollect}}
+        <div class="xp-card__buttons">
+            {{#each actors}}
+                {{#unless isClaimed}}
+                    <button data-xp-action="claim" data-actor-uuid="{{actor.uuid}}">{{localize "xp-tally.collect-for" name=actor.name}}</button>
+                {{else}}
+                    <div class="xp-card__claimed">
+                        {{#unless isLevelUp}}
+                            <i class="claimed fas fa-check fa-lg"></i>
+                            {{localize "xp-tally.claimed-by" name=actor.name}}
+                        {{else}}
+                            <i class="level-up fas fa-circle-up fa-lg"></i>
+                            {{localize "xp-tally.level-up" name=actor.name}}
+                        {{/unless}}
+                    </div>
+                {{/unless}}
+            {{/each}}
+        </div>
+    {{/if}}
+</div>

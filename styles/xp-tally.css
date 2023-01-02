@@ -1,0 +1,432 @@
+#xp-tally {
+    min-width: 270px;
+    min-height: 250px;
+}
+
+.xp-tally__tracker-container {
+    margin: -8px;
+    height: calc(100% + 16px);
+}
+
+.xp-tally__reward-list-container {
+    position: relative;
+}
+
+.xp-tally__reward-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.xp-tally__tracker-footer {
+    border-top: 1px solid rgba(0, 0, 0, .4);
+    padding: 10px;
+}
+
+.xp-tally__tracker-footer button {
+    border: 0;
+}
+
+.xp-tally__tracker-footer > .flexrow {
+    gap: 10px;
+}
+
+.xp-tally__xp-field {
+    text-align: center !important;
+}
+
+.xp-tally__milestone-fields button {
+    height: 24px;
+    line-height: 24px;
+    margin: 3px 0 0 0;
+}
+
+.xp-tally__milestone-fields button span {
+    color: #7a7971;
+    font-size: 12px;
+}
+
+.xp-tally__milestone-fields .flexrow {
+    gap: 4px;
+}
+
+.xp-tally__token-image {
+    width: 60px;
+    height: 60px;
+    border: 1px solid transparent;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.xp-tally__milestone-image {
+    flex: 0 60px !important;
+    border: 1px solid transparent;
+    padding: 5px;
+    margin-right: 5px;
+    text-align: center;
+    color: #7a7971;
+    padding: 6px 0;
+}
+
+.xp-tally__token, .xp-tally__milestone {
+    align-items: center;
+    background: var(--faintest-color);
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+.xp-tally__token-name, .xp-tally__milestone-name {
+    color: #191813;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.xp-tally__token-xp-value, .xp-tally__milestone-xp-value {
+    color: #7a7971;
+}
+
+.xp-tally__reward-actions {
+    color: #7a7971;
+    padding: 0 10px;
+}
+
+.xp-tally__award-rewards {
+    margin: 0;
+    height: 100%;
+}
+
+.xp-tally__award-rewards div {
+    font-size: 12px;
+    line-height: 14px;
+    color: #7a7971;
+}
+
+
+.xp-tally__award-header {
+    background-color: var(--faint-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+@keyframes pulseGlow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+
+    to {
+        text-shadow: 0 0 50px rgba(255, 255, 255, 1);
+    }
+}
+
+.xp-tally__award-header i {
+    color: #7a7971;
+    animation: 2s infinite alternate pulseGlow;
+}
+
+.xp-tally__award-xp-amount {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: 2s infinite alternate pulseGlow;
+}
+
+.xp-tally__award-actor-list {
+    margin: 10px 0;
+}
+
+.xp-tally__award-empty-actors {
+    text-align: center;
+    opacity: 0.5;
+    height: 80px;
+    line-height: 80px;
+    border: 2px dashed;
+}
+
+.xp-tally__award-actor {
+    background-color: var(--faintest-color);
+    border-radius: 5px;
+    margin-bottom: 3px;
+    align-items: center;
+}
+
+.xp-tally__award-actor-image {
+    width: 60px;
+    height: 60px;
+    border: 1px solid transparent;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.xp-tally__award-actor input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: transparent;
+    margin-top: 3px;
+}
+
+.xp-tally__award-actor-actions {
+    padding: 10px;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.xp-tally__award-actor:hover .xp-tally__award-actor-actions {
+    opacity: 0.5;
+}
+
+.xp-tally__award-xp-share {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.xp-tally__distribute-button {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px groove var(--color-border-light-highlight);
+    display: block;
+    border-radius: 3px;
+    font-size: var(--font-size-14);
+    line-height: 28px;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    text-align: center;
+}
+
+.xp-tally__distribute-button:hover {
+    outline: none;
+    box-shadow: 0 0 5px var(--color-shadow-primary);
+    text-shadow: none;
+}
+
+
+.xp-card__header {
+    text-align: center;
+    padding: 10px;
+    background: var(--faintest-color);
+    border-radius: 15px;
+    margin-bottom: 6px;
+}
+
+.xp-card__header .trophy {
+    color: #7a7971;
+    position: relative;
+}
+
+.xp-card__header .splotch {
+    position: absolute;
+    color: white;
+    top: 0;
+    left: 0;
+}
+
+@keyframes twinkle1 {
+    10% {
+        transform: translate(-4px,-14px) scale(0) rotate(0);
+    }
+
+    20% {
+        transform: translate(-4px,-14px) scale(0.3) rotate(100deg);
+    }
+
+    30% {
+        transform: translate(-4px,-14px) scale(0) rotate(360deg);
+    }
+}
+
+@keyframes twinkle2 {
+    60% {
+        transform: translate(11px,-1px) scale(0) rotate(0);
+    }
+
+    70% {
+        transform: translate(11px,-1px) scale(0.3) rotate(100deg);
+    }
+
+    80% {
+        transform: translate(11px,-1px) scale(0) rotate(360deg);
+    }
+}
+
+@keyframes twinkle3 {
+    40% {
+        transform: translate(-5px,13px) scale(0) rotate(0);
+    }
+
+    50% {
+        transform: translate(-5px,13px) scale(0.2) rotate(100deg);
+    }
+
+    60% {
+        transform: translate(-5px,13px) scale(0) rotate(360deg);
+    }
+}
+
+@keyframes twinkle4 {
+    80% {
+        transform: translate(-17px,-13px) scale(0) rotate(0);
+    }
+
+    85% {
+        transform: translate(-17px,-13px) scale(0.15) rotate(100deg);
+    }
+
+    95% {
+        transform: translate(-17px,-13px) scale(0) rotate(360deg);
+    }
+}
+
+
+.xp-card__header .splotch1 {
+    transform: translate(-4px,-14px) scale(0);
+    animation: 4s infinite forwards twinkle1;
+}
+.xp-card__header .splotch2 {
+    transform: translate(11px,-1px) scale(0);
+    animation: 3s infinite forwards twinkle2;
+}
+.xp-card__header .splotch3 {
+    transform: translate(-5px,13px) scale(0);
+    animation: 3.5s infinite forwards twinkle3;
+}
+.xp-card__header .splotch4 {
+    transform: translate(-17px,-13px) scale(0);
+    animation: 7s infinite forwards twinkle4;
+}
+
+.xp-card__awarded {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #7a7971;
+}
+
+.xp-card__xp-amount {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.xp-card__buttons > * {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 2px;
+}
+
+.xp-card__claimed {
+    line-height: 32px;
+    color: #7a7971;
+    font-size: 14px;
+    text-align: center;
+}
+
+.xp-card__claimed i {
+    color: black;
+    margin-right: 3px;
+}
+
+.xp-card__claimed .level-up {
+    color: white;
+    text-shadow: 0 0 4px rgb(0, 0, 0, .8);
+}
+
+#xp-tally__tool-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -10px;
+    margin-right: -10px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 21px;
+    border-radius: 50%;
+    background: #d11010;
+    color: white;
+    pointer-events: none;
+}
+
+@keyframes badgePulse {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#xp-tally__tool-badge.pulse {
+    animation: 0.4s forwards badgePulse;
+}
+
+
+#xp-tally-history {
+    min-width: 600px;
+    min-height: 200px;
+}
+
+.xp-tally__history-container {
+    position: relative;
+}
+
+.xp-tally__history-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    overflow-y: auto;
+    background: var(--faintest-color);
+}
+
+.xp-tally__history-rewards {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 300px;
+    right: 0;
+    overflow-y: auto;
+    padding-left: 8px;
+}
+
+.xp-tally__history {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.xp-tally__history.active {
+    background-color: var(--faint-color);
+}
+
+.xp-tally__history .nowrap {
+    white-space: nowrap;
+}
+
+.xp-tally__history flexrow {
+    padding: 2px 0;
+}
+
+.xp-tally__history-timestamp {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.xp-tally__history-actors {
+    color: #7a7971;
+}
+
+.xp-tally__history-xpshare {
+    font-weight: bold;
+}

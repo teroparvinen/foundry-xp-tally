@@ -1,0 +1,39 @@
+<form>
+    <div class="xp-tally__award-header">
+        <i class="fas fa-trophy fa-4x"></i>
+        <div class="xp-tally__award-xp-amount">
+            {{localize "xp-tally.xp-amount" xp=xp}}
+        </div>
+    </div>
+    <div class="xp-tally__award-actor-list">
+        {{#unless actorRows.length}}
+            <div class="xp-tally__award-empty-actors">
+                {{localize "xp-tally.no-actors"}}
+            </div>
+        {{/unless}}
+        {{#each actorRows as |row index|}}
+            <div class="xp-tally__award-actor flexrow" data-uuid="{{row.actor.uuid}}">
+                <img class="flex0 xp-tally__award-actor-image" src="{{row.actor.prototypeToken.texture.src}}" />
+                <div class="flex1 flexcol">
+                    <div>{{row.actor.name}}</div>
+                    {{#if ../useIndividualAdjustment}}
+                        <input type="text" name="adjustment.{{index}}" value="{{row.adjustment}}" placeholder="{{../xpShare}}" />
+                    {{/if}}
+                </div>
+                <div class="flex0 xp-tally__award-actor-actions">
+                    <a data-action="delete-actor"><i class="fas fa-times"></i></a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="xp-tally__award-xp-share">
+        <p>{{localize "xp-tally.xp-share" xp=xpShare}}</p>
+        {{#if adjustedTotal}}
+            <p>{{localize "xp-tally.adjusted-total-xp" xp=adjustedTotal}}</p>
+        {{/if}}
+    </div>
+    <a class="xp-tally__distribute-button" data-action="distribute">
+        <i class="fas fa-people-arrows fa-lg"></i>
+        {{localize "xp-tally.distribute"}}
+    </a>
+</form>

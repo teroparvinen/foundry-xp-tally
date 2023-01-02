@@ -1,0 +1,40 @@
+<form class="xp-tally__history-container">
+    <div class="xp-tally__history-list">
+        {{#each history as |entry index|}}
+            <div class="xp-tally__history {{#if (eq index ../index)}}active{{/if}}" data-index="{{index}}">
+                <div class="flexrow">
+                    <div class="flex1 nowrap xp-tally__history-timestamp">{{timeSince entry.timestamp}}</div>
+                    <div class="flex0 nowrap xp-tally__history-reward-count">{{localize "xp-tally.history-rewards" count=entry.rewards.length}}</div>
+                </div>
+                {{#each entry.shares}}
+                    <div class="flexrow">
+                        <div class="flex1 xp-tally__history-actors">{{actors}}</div>
+                        <div class="flex0 nowrap xp-tally__history-xpshare">{{localize "xp-tally.xp-share-short" xp=xpShare}}</div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+    <div class="xp-tally__history-rewards">
+        {{#each rewards as |reward index|}}
+            {{#if (or (eq type "token") (eq type "actor"))}}
+                <div class="xp-tally__token reward flexrow">
+                    <img class="xp-tally__token-image flex0" src={{reward.img}} />
+                    <div class="flexcol">
+                        <div class="xp-tally__token-name">{{reward.name}}</div>
+                        <div class="xp-tally__token-xp-value">{{reward.xp}} XP</div>
+                    </div>
+                </div>
+            {{/if}}
+            {{#if (eq type "milestone")}}
+                <div class="xp-tally__milestone reward flexrow">
+                    <i class="fas fa-masks-theater fa-2x xp-tally__milestone-image flex0"></i>
+                    <div class="flexcol">
+                        <div class="xp-tally__milestone-name">{{reward.name}}</div>
+                        <div class="xp-tally__milestone-xp-value">{{reward.xp}} XP</div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</form>

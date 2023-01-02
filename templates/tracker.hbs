@@ -1,0 +1,53 @@
+<form>
+    <div class="flexcol xp-tally__tracker-container">
+        <div class="flex1 xp-tally__reward-list-container">
+            <div class="xp-tally__reward-list">
+                {{#each rewards as |reward index|}}
+                    {{#if (or (eq type "token") (eq type "actor"))}}
+                        <div class="xp-tally__token reward flexrow" data-index="{{index}}">
+                            <img class="xp-tally__token-image flex0" src={{reward.img}} />
+                            <div class="flexcol">
+                                <div class="xp-tally__token-name">{{reward.name}}</div>
+                                <div class="xp-tally__token-xp-value">{{reward.xp}} XP</div>
+                            </div>
+                            <div class="xp-tally__reward-actions flex0">
+                                <a data-action="delete-reward"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if (eq type "milestone")}}
+                        <div class="xp-tally__milestone reward flexrow" data-index="{{index}}">
+                            <i class="fas fa-masks-theater fa-2x xp-tally__milestone-image flex0"></i>
+                            <div class="flexcol">
+                                <div class="xp-tally__milestone-name">{{reward.name}}</div>
+                                <div class="xp-tally__milestone-xp-value">{{reward.xp}} XP</div>
+                            </div>
+                            <div class="xp-tally__reward-actions flex0">
+                                <a data-action="delete-reward"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="flex0 xp-tally__tracker-footer">
+            <div class="flexrow">
+                <div class="flex3">
+                    <div class="flexcol xp-tally__milestone-fields">
+                        <div class="flexrow">
+                            <input class="flex3" type="text" name="milestoneName" placeholder="{{localize "xp-tally.milestone-name-placeholder"}}" />
+                            <input class="flex1 xp-tally__xp-field" type="number" name="milestoneXp" placeholder="{{localize "xp-tally.milestone-xp-placeholder"}}" />
+                        </div>
+                        <button type="submit"><i class="fas fa-masks-theater"></i> <span>{{localize "xp-tally.add-milestone"}}</span></button>
+                    </div>
+                </div>
+                <div class="flex1">
+                    <button class="xp-tally__award-rewards" data-action="award-rewards">
+                        <i class="fas fa-trophy fa-lg"></i>
+                        <div>{{localize "xp-tally.award-rewards"}}</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

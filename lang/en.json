@@ -1,0 +1,32 @@
+{
+    "xp-tally": {
+        "tracker-title": "XP Tally",
+        "add-milestone": "Add Milestone",
+        "award-rewards": "Award XP",
+        "milestone-name-placeholder": "Milestone",
+        "milestone-xp-placeholder": "XP",
+        "award-title": "Award XP",
+        "xp-amount": "{xp} XP",
+        "xp-amount-float": "+{xp} XP",
+        "no-actors": "Drop actors to award here",
+        "xp-share": "Individual share {xp} XP",
+        "xp-share-short": "{xp} XP",
+        "adjusted-total-xp": "Adjusted total {xp} XP",
+        "distribute": "Distribute",
+        "you-have-been-awarded": "You have been awarded",
+        "collect-for": "Collect for {name}",
+        "claimed-by": "Claimed by {name}",
+        "level-up": "Level up for {name}",
+        "history": "History",
+        "history-rewards": "{count} rewards",
+        "delete-history": "Erase history",
+        "setting-show-badge": "Show badge on control",
+        "setting-individual-adjustment": "Individual character adjustments",
+        "setting-individual-adjustment-hint": "This allows entering manual adjustments per character when awarding XP. Using a value with a plus or minus sign will make a relative adjustment, while a plain value will override the calculated value. If the calculated per character share would be 525 and you enter +100 into the adjustment field, the result will be 625. If you enter in 600, the result will be 600.",
+        "settings-application": "XP application method",
+        "settings-application-collect": "Chat button to collect",
+        "settings-application-announce": "Apply automatically, announce in chat",
+        "settings-application-auto": "Apply automatically, no chat message",
+        "warn-no-rewards": "Add some rewards first"
+    }
+}
