@@ -1,3 +1,8 @@
+#xp-tally, #xp-tally-history, #xp-tally-award {
+    --color-faintest-shade: rgba(0, 0, 0, 0.05);
+    --color-faint-shade: rgba(0, 0, 0, .1);
+}
+
 #xp-tally {
     min-width: 270px;
     min-height: 250px;
@@ -73,7 +78,7 @@
 
 .xp-tally__token, .xp-tally__milestone {
     align-items: center;
-    background: var(--faintest-color);
+    background: var(--color-faintest-shade);
     border-radius: 5px;
     margin-bottom: 3px;
 }
@@ -106,7 +111,7 @@
 
 
 .xp-tally__award-header {
-    background-color: var(--faint-color);
+    background-color: var(--color-faint-shade);
     padding: 20px;
     text-align: center;
     border-radius: 15px;
@@ -147,7 +152,7 @@
 }
 
 .xp-tally__award-actor {
-    background-color: var(--faintest-color);
+    background-color: var(--color-faintest-shade);
     border-radius: 5px;
     margin-bottom: 3px;
     align-items: center;
@@ -207,7 +212,7 @@
 .xp-card__header {
     text-align: center;
     padding: 10px;
-    background: var(--faintest-color);
+    background: var(--color-faintest-shade);
     border-radius: 15px;
     margin-bottom: 6px;
 }
@@ -388,7 +393,7 @@
     left: 0;
     width: 300px;
     overflow-y: auto;
-    background: var(--faintest-color);
+    background: var(--color-faintest-shade);
 }
 
 .xp-tally__history-rewards {
@@ -407,7 +412,7 @@
 }
 
 .xp-tally__history.active {
-    background-color: var(--faint-color);
+    background-color: var(--color-faint-shade);
 }
 
 .xp-tally__history .nowrap {
