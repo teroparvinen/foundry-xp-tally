@@ -35,13 +35,13 @@ export class AwardXp extends FormApplication {
     }
 
     get distribution() {
-        const actors = game.settings.get("xp-tally", "actors").map(u => fromUuidSync(u));
-        actors.sort((a, b) => a.name.localeCompare(b.name))
+        const actors = game.settings.get("xp-tally", "actors").map(u => fromUuidSync(u)).filter(a => a);
+        actors.sort((a, b) => a.name.localeCompare(b.name));
         const actorRows = actors.map((a, i) => ({ actor: a, adjustment: this.adjustments?.[i] }));
         const xp = Tally.totalXp;
         const xpShare = actors.length ? Math.floor(xp / actors.length) : 0;
 
-        return { actors, actorRows, xp, xpShare }
+        return { actors, actorRows, xp, xpShare };
     }
 
     get adjustedTotal() {

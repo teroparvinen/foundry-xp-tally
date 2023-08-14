@@ -71,25 +71,25 @@ export class Tally {
     }
 
     static async distribute(actorAdjustments) {
-        const actorUuids = game.settings.get("xp-tally", "actors");
+        const actors = game.settings.get("xp-tally", "actors").map(u => fromUuidSync(u)).filter(a => a);
         const rewards = Tally.rewards;
-        if (actorUuids && actorUuids.length) {
+        if (actors && actors.length) {
             const method = game.settings.get("xp-tally", "application");
-            const xpShare = Math.floor(Tally.totalXp / actorUuids.length);
+            const xpShare = Math.floor(Tally.totalXp / actors.length);
 
-            const actorShares = actorUuids.map(u => ({
-                actorUuid: u,
-                xpShare: Tally.adjustedValue(xpShare, actorAdjustments[u])
+            const actorShares = actors.map(a => ({
+                actor: a,
+                xpShare: Tally.adjustedValue(xpShare, actorAdjustments[a.uuid])
             }));
             const shares = actorShares.reduce((r, a) => {
                 r[a.xpShare] = r[a.xpShare] || [];
-                r[a.xpShare].push(a.actorUuid);
+                r[a.xpShare].push(a.actor);
                 return r;
             }, {});
 
             if (method === "collect" || method === "announce") {
                 for (const xpShare in shares) {
-                    const actorUuids = shares[xpShare];
+                    const actorUuids = shares[xpShare].map(a => a.uuid);
                     const xpCard = new XpCard(actorUuids, [], parseInt(xpShare), method === "collect");
                     xpCard.make();
                 }
@@ -97,8 +97,8 @@ export class Tally {
 
             if (method === "announce" || method === "auto") {
                 for (const xpShare in shares) {
-                    const actorUuids = shares[xpShare];
-                    await Promise.all(actorUuids.map(u => Tally.claimForActor(fromUuidSync(u), parseInt(xpShare))));
+                    const actors = shares[xpShare];
+                    await Promise.all(actors.map(a => Tally.claimForActor(a, parseInt(xpShare))));
                 }
             }
 
