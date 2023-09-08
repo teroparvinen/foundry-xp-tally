@@ -3,17 +3,35 @@ import { XpCard } from "./xp-card.js";
 
 export class Tally {
 
+    static getCorrectedHistory() {
+        return game.settings.get("xp-tally", "history")?.map(entry => {
+            let { rewards, shares, timestamp } = entry;
+            shares = Object.entries(entry.shares).reduce((shares, share) => {
+                shares[share[0]] = share[1].map(a => {
+                    const t = typeof(a);
+                    if (t === "object" && game.actors.get(a._id)) {
+                        return game.actors.get(a._id).uuid;
+                    } else if (t === "string") {
+                        return a;
+                    }
+                }).filter(a => a);
+                return shares;
+            }, {});
+            return { rewards, shares, timestamp };
+        }) || [];
+    }
+
     static get history() {
-        return game.settings.get("xp-tally", "history") || [];
+        return this.getCorrectedHistory();
     }
 
     static async addHistory(record) {
-        const current = game.settings.get("xp-tally", "history");
+        const current = this.getCorrectedHistory();
         await game.settings.set("xp-tally", "history", [...current, record]);
     }
 
     static async removeHistory(index) {
-        await game.settings.set("xp-tally", "history", game.settings.get("xp-tally", "history").filter((h, i) => i != index));      
+        await game.settings.set("xp-tally", "history", this.getCorrectedHistory().filter((h, i) => i != index));      
     }
 
     static get rewards() {
